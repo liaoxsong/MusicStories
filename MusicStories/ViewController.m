@@ -5,19 +5,14 @@
 @import MediaPlayer;
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *textBackground;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
-//@property (weak, nonatomic) IBOutlet UITextField *postingField;
 @property (strong, nonatomic) MPMediaItem* currentPlayingItem;
-
-
 @end
 
 @implementation ViewController 
 
-UIScrollView *cover;
 UITextField *postField;
-UIButton *interactButton;
+
 
 @synthesize currentPlayingItem;
 
@@ -36,7 +31,6 @@ UIButton *interactButton;
                                  action:@selector(dismissKeyboard)];
   
   [self.view addGestureRecognizer:tap];
- 
 }
 
 -(void) setUpHeader {
@@ -60,11 +54,9 @@ UIButton *interactButton;
 
 
 -(void) setUpPostingField {
-
   postField = [[UITextField alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
-  postField.placeholder = @"Placeholder text";
+  postField.placeholder = @"Post comment here";
   postField.backgroundColor = [UIColor greenColor];
-  
   [[self view] addSubview:postField];
 }
 
@@ -99,10 +91,8 @@ UIButton *interactButton;
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  NSLog(@"scrolled");
   [postField resignFirstResponder];
 }
-
 
 - (void) keyboardWillShow: (NSNotification*)aNotification {
   NSDictionary* info = [aNotification userInfo];
@@ -111,14 +101,11 @@ UIButton *interactButton;
   [UIView animateWithDuration:0.3f animations:^{
     postField.frame = CGRectMake(postField.frame.origin.x, postField.frame.origin.y-kbSize.height, postField.frame.size.width, postField.frame.size.height);
   }];
-  
-  
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-  
   [UIView animateWithDuration:0.3f animations:^{
     postField.frame = CGRectMake(postField.frame.origin.x, self.view.frame.size.height-postField.frame.size.height, postField.frame.size.width, postField.frame.size.height);
   }];
