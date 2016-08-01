@@ -4,30 +4,32 @@
 #import "ViewHeader.h"
 @import MediaPlayer;
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *textBackground;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
-@property (weak, nonatomic) IBOutlet UITextField *postingField;
+//@property (weak, nonatomic) IBOutlet UITextField *postingField;
 @property (strong, nonatomic) MPMediaItem* currentPlayingItem;
+
+
 @end
 
 @implementation ViewController 
+
+UIScrollView *cover;
+UITextField *postField;
+UIButton *interactButton;
 
 @synthesize currentPlayingItem;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  [self postingField].delegate = self;
-  
-   //_postingField.frame = CGRectMake(0, 0, 100,50);
-   NSLog(@"posting field frame: %@", NSStringFromCGRect([_postingField frame]));
-   NSLog(@"textBackground field frame: %@", NSStringFromCGRect([_textBackground frame]));
+
   [self registerForKeyboardNotifications];
   currentPlayingItem = [[MPMusicPlayerController systemMusicPlayer] nowPlayingItem];
   self.automaticallyAdjustsScrollViewInsets = YES;
   
   [self setUpHeader];
+  [self setUpPostingField];
   
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
@@ -57,6 +59,16 @@
 }
 
 
+-(void) setUpPostingField {
+
+  postField = [[UITextField alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
+  postField.placeholder = @"Placeholder text";
+  postField.backgroundColor = [UIColor greenColor];
+  
+  [[self view] addSubview:postField];
+}
+
+
 //MARK: tableview datasource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return 0;
@@ -70,7 +82,7 @@
 // PRAGMA MARK: keyboard
 
 -(void)dismissKeyboard {
-  [[self postingField] resignFirstResponder];
+  [postField resignFirstResponder];
 }
 
 - (void)registerForKeyboardNotifications
@@ -86,24 +98,30 @@
 }
 
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  NSLog(@"scrolled");
+  [postField resignFirstResponder];
+}
 
-- (void) keyboardWillShow: (NSNotification*) aNotification {
- // NSLog(@"keyboardWillShow");
-  
+
+- (void) keyboardWillShow: (NSNotification*)aNotification {
+  NSDictionary* info = [aNotification userInfo];
+  CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+  [UIView animateWithDuration:0.3f animations:^{
+    postField.frame = CGRectMake(postField.frame.origin.x, postField.frame.origin.y-kbSize.height, postField.frame.size.width, postField.frame.size.height);
+  }];
   
   
 }
 
-
+// Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
   
-  [UIView animateWithDuration:1.0f animations:^ {
-    // [_postingField.] = CGRectMake(0, 0, 100, 50);
-    _textBackground.frame = CGRectMake(0, 556, 600, 44);
-  
+  [UIView animateWithDuration:0.3f animations:^{
+    postField.frame = CGRectMake(postField.frame.origin.x, self.view.frame.size.height-postField.frame.size.height, postField.frame.size.width, postField.frame.size.height);
   }];
- // NSLog(@"keyboardWillBeHidden");
-  
 }
+
 @end
