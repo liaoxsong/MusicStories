@@ -1,18 +1,11 @@
-//
-//  ViewController.m
-//  MusicStories
-//
-//  Created by Song Liao on 6/25/16.
-//  Copyright © 2016 Song. All rights reserved.
-//
+//Pikachu
 
 #import "ViewController.h"
 #import "ViewHeader.h"
 @import MediaPlayer;
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *textBackground;
-
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
 @property (weak, nonatomic) IBOutlet UITextField *postingField;
 @property (strong, nonatomic) MPMediaItem* currentPlayingItem;
@@ -24,11 +17,23 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  [self postingField].delegate = self;
+  
+   //_postingField.frame = CGRectMake(0, 0, 100,50);
+   NSLog(@"posting field frame: %@", NSStringFromCGRect([_postingField frame]));
+   NSLog(@"textBackground field frame: %@", NSStringFromCGRect([_textBackground frame]));
   [self registerForKeyboardNotifications];
   currentPlayingItem = [[MPMusicPlayerController systemMusicPlayer] nowPlayingItem];
   self.automaticallyAdjustsScrollViewInsets = YES;
   
   [self setUpHeader];
+  
+  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                 initWithTarget:self
+                                 action:@selector(dismissKeyboard)];
+  
+  [self.view addGestureRecognizer:tap];
  
 }
 
@@ -54,7 +59,6 @@
 
 //MARK: tableview datasource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  //this is fucking obj-c;
   return 0;
 }
 
@@ -64,46 +68,42 @@
 }
 
 // PRAGMA MARK: keyboard
+
+-(void)dismissKeyboard {
+  [[self postingField] resignFirstResponder];
+}
+
 - (void)registerForKeyboardNotifications
 {
   [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(keyboardWasShown:)
-                                               name:UIKeyboardDidShowNotification object:nil];
+                                           selector:@selector(keyboardWillShow:)
+                                               name:UIKeyboardWillShowNotification object:nil];
+  
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(keyboardWillBeHidden:)
                                                name:UIKeyboardWillHideNotification object:nil];
 }
 
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-  NSDictionary* info = [aNotification userInfo];
-  CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-  UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-  NSLog(@"keyboardWasShown");
+
+
+- (void) keyboardWillShow: (NSNotification*) aNotification {
+ // NSLog(@"keyboardWillShow");
   
-  //[self textBackground] contentInsetSet = contentInsets;
-//  
-//  UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-//  scrollView.contentInset = contentInsets;
-//  scrollView.scrollIndicatorInsets = contentInsets;
-//  
-//  // If active text field is hidden by keyboard, scroll it so it's visible
-//  // Your app might not need or want this behavior.
-//  CGRect aRect = self.view.frame;
-//  aRect.size.height -= kbSize.height;
-//  if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
-//    [self.scrollView scrollRectToVisible:activeField.frame animated:YES];
-//  }
+  
+  
 }
 
-// Called when the UIKeyboardWillHideNotification is sent
+
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-  UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-  NSLog(@"keyboardWillBeHidden");
-//  scrollView.contentInset = contentInsets;
-//  scrollView.scrollIndicatorInsets = contentInsets;
+  
+  [UIView animateWithDuration:1.0f animations:^ {
+    // [_postingField.] = CGRectMake(0, 0, 100, 50);
+    _textBackground.frame = CGRectMake(0, 556, 600, 44);
+  
+  }];
+ // NSLog(@"keyboardWillBeHidden");
+  
 }
 @end

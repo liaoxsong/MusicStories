@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A36D39E838D30BF2C91AF45 /* Pods_MusicStories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD9958115D436B41AE760A /* Pods_MusicStories.framework */; };
 		E4BB0E091D1E52F900E36992 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB0E081D1E52F900E36992 /* main.m */; };
 		E4BB0E0C1D1E52F900E36992 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB0E0B1D1E52F900E36992 /* AppDelegate.m */; };
 		E4BB0E0F1D1E52F900E36992 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB0E0E1D1E52F900E36992 /* ViewController.m */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2294ECA9079DDC1BD230DC51 /* Pods-MusicStories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicStories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicStories/Pods-MusicStories.debug.xcconfig"; sourceTree = "<group>"; };
+		B1FD9958115D436B41AE760A /* Pods_MusicStories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicStories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5580D607BE3FFAFD6966B39 /* Pods-MusicStories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicStories.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicStories/Pods-MusicStories.release.xcconfig"; sourceTree = "<group>"; };
 		E4BB0E041D1E52F900E36992 /* MusicStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BB0E081D1E52F900E36992 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4BB0E0A1D1E52F900E36992 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,17 +40,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A36D39E838D30BF2C91AF45 /* Pods_MusicStories.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03AEB515888A20546750F0AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2294ECA9079DDC1BD230DC51 /* Pods-MusicStories.debug.xcconfig */,
+				C5580D607BE3FFAFD6966B39 /* Pods-MusicStories.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CB6F3BC576205449334DFC9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1FD9958115D436B41AE760A /* Pods_MusicStories.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E4BB0DFB1D1E52F900E36992 = {
 			isa = PBXGroup;
 			children = (
 				E4BB0E061D1E52F900E36992 /* MusicStories */,
 				E4BB0E051D1E52F900E36992 /* Products */,
+				03AEB515888A20546750F0AE /* Pods */,
+				CB6F3BC576205449334DFC9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4BB0E1B1D1E52F900E36992 /* Build configuration list for PBXNativeTarget "MusicStories" */;
 			buildPhases = (
+				2256357F967DE62EADD5A5A1 /* [CP] Check Pods Manifest.lock */,
 				E4BB0E001D1E52F900E36992 /* Sources */,
 				E4BB0E011D1E52F900E36992 /* Frameworks */,
 				E4BB0E021D1E52F900E36992 /* Resources */,
+				E7EAEF1DB5373FACC24B95B8 /* [CP] Embed Pods Frameworks */,
+				0AF3BDBB47BAA26EE6262347 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,6 +175,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AF3BDBB47BAA26EE6262347 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicStories/Pods-MusicStories-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2256357F967DE62EADD5A5A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E7EAEF1DB5373FACC24B95B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicStories/Pods-MusicStories-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4BB0E001D1E52F900E36992 /* Sources */ = {
@@ -267,6 +342,7 @@
 		};
 		E4BB0E1C1D1E52F900E36992 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2294ECA9079DDC1BD230DC51 /* Pods-MusicStories.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MusicStories/Info.plist;
@@ -278,6 +354,7 @@
 		};
 		E4BB0E1D1D1E52F900E36992 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5580D607BE3FFAFD6966B39 /* Pods-MusicStories.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MusicStories/Info.plist;

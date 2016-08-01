@@ -72,7 +72,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-gL-p2e">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="156" width="600" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="post comments here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OZb-zj-OCK">
                                         <rect key="frame" x="6" y="7" width="588" height="30"/>
@@ -97,9 +97,15 @@
                             <constraint firstAttribute="trailing" secondItem="Wk5-sO-7dy" secondAttribute="trailing" id="QX2-UO-SZT"/>
                             <constraint firstAttribute="trailing" secondItem="TqG-gL-p2e" secondAttribute="trailing" id="efM-Yh-5iA"/>
                             <constraint firstItem="Wk5-sO-7dy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lme-0c-qRr"/>
-                            <constraint firstAttribute="bottom" secondItem="TqG-gL-p2e" secondAttribute="bottom" id="uZS-km-Cx4"/>
+                            <constraint firstItem="TqG-gL-p2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="136" id="qAf-8h-oUu"/>
+                            <constraint firstAttribute="bottom" secondItem="TqG-gL-p2e" secondAttribute="bottom" constant="400" id="uZS-km-Cx4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wk5-sO-7dy" secondAttribute="bottom" id="wCV-SM-htB"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uZS-km-Cx4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="commentsTable" destination="Wk5-sO-7dy" id="yHy-mK-xjG"/>
