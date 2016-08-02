@@ -6,13 +6,12 @@
 @import MarqueeLabel;
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *postTextView;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
 @property (strong, nonatomic) MPMediaItem* currentPlayingItem;
 @end
 
-@implementation ViewController 
-
-UITextField *postField;
+@implementation ViewController
 
 @synthesize currentPlayingItem;
 
@@ -23,8 +22,6 @@ UITextField *postField;
   currentPlayingItem = [[MPMusicPlayerController systemMusicPlayer] nowPlayingItem];
   self.automaticallyAdjustsScrollViewInsets = YES;
 
-  
-  [self setUpPostingField];
   
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
@@ -65,13 +62,6 @@ UITextField *postField;
 }
 
 
--(void) setUpPostingField {
-  postField = [[UITextField alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
-  postField.placeholder = @"Post comment here";
-  postField.backgroundColor = [UIColor greenColor];
-  [[self view] addSubview:postField];
-}
-
 
 //MARK: tableview datasource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -86,7 +76,7 @@ UITextField *postField;
 // PRAGMA MARK: keyboard
 
 -(void)dismissKeyboard {
-  [postField resignFirstResponder];
+  [_postTextView resignFirstResponder];
 }
 
 - (void)registerForKeyboardNotifications
@@ -102,7 +92,7 @@ UITextField *postField;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  [postField resignFirstResponder];
+  [_postTextView resignFirstResponder];
 }
 
 - (void) keyboardWillShow: (NSNotification*)aNotification {
@@ -110,7 +100,7 @@ UITextField *postField;
   CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
   [UIView animateWithDuration:0.3f animations:^{
-    postField.frame = CGRectMake(postField.frame.origin.x, postField.frame.origin.y-kbSize.height, postField.frame.size.width, postField.frame.size.height);
+    _postTextView.frame = CGRectMake(_postTextView.frame.origin.x, _postTextView.frame.origin.y-kbSize.height, _postTextView.frame.size.width, _postTextView.frame.size.height);
   }];
 }
 
@@ -118,7 +108,7 @@ UITextField *postField;
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
   [UIView animateWithDuration:0.3f animations:^{
-    postField.frame = CGRectMake(postField.frame.origin.x, self.view.frame.size.height-postField.frame.size.height, postField.frame.size.width, postField.frame.size.height);
+    _postTextView.frame = CGRectMake(_postTextView.frame.origin.x, self.view.frame.size.height-_postTextView.frame.size.height, _postTextView.frame.size.width, _postTextView.frame.size.height);
   }];
 }
 

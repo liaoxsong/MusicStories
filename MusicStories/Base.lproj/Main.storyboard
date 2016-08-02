@@ -59,7 +59,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="umi-oS-Nyd"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gn-bS-5DJ">
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gn-bS-5DJ">
                                 <rect key="frame" x="13" y="562" width="25" height="25"/>
                                 <state key="normal" title="Button" image="pen_icon"/>
                             </button>
@@ -86,6 +86,7 @@
                     <navigationItem key="navigationItem" id="Vdi-tm-Qc5"/>
                     <connections>
                         <outlet property="commentsTable" destination="Wk5-sO-7dy" id="yHy-mK-xjG"/>
+                        <outlet property="postTextView" destination="2yh-i1-gom" id="R0c-po-wav"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
