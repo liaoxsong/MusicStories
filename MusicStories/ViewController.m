@@ -1,8 +1,9 @@
-//Pikachu
 
 #import "ViewController.h"
 #import "ViewHeader.h"
+
 @import MediaPlayer;
+@import MarqueeLabel;
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
@@ -13,7 +14,6 @@
 
 UITextField *postField;
 
-
 @synthesize currentPlayingItem;
 
 - (void)viewDidLoad {
@@ -22,8 +22,8 @@ UITextField *postField;
   [self registerForKeyboardNotifications];
   currentPlayingItem = [[MPMusicPlayerController systemMusicPlayer] nowPlayingItem];
   self.automaticallyAdjustsScrollViewInsets = YES;
+
   
-  [self setUpHeader];
   [self setUpPostingField];
   
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -33,23 +33,35 @@ UITextField *postField;
   [self.view addGestureRecognizer:tap];
 }
 
--(void) setUpHeader {
-  ViewHeader *header = [[self commentsTable] dequeueReusableCellWithIdentifier:@"ViewHeader" ];
-  if ([currentPlayingItem artwork])
-  {
-    header.albumImage.image = [[currentPlayingItem artwork] imageWithSize: CGSizeMake(80, 80)];
-    header.albumImage.layer.masksToBounds = YES;
-    header.albumImage.layer.borderColor = [UIColor grayColor].CGColor;
-    header.albumImage.layer.borderWidth = 0.4f;
+- (void) viewWillAppear:(BOOL)animated {
+  [self refreshNavigationBar];
+}
+
+-(void) refreshNavigationBar {
+   //set a button if no song appear
+  CGRect headerFrame = CGRectMake(0, 0, self.view.frame.size.width, 44);
+  
+  if (currentPlayingItem == nil) {
+  
+   // UIButton *playButton = [UIButton alloc] ini
+  } else {
+    
+    UIView *wrapper = [[UIView alloc] initWithFrame:headerFrame];
+    
+    UIImageView *microphoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 25, 25)];
+    microphoneImage.image = [UIImage imageNamed:@"microphone_icon"];
+    microphoneImage.contentMode = UIViewContentModeScaleAspectFit;
+    microphoneImage.center = CGPointMake(microphoneImage.center.x, 22);
+    [wrapper addSubview:microphoneImage];
+    
+    MarqueeLabel *titleLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(microphoneImage.frame) + 8, 0, self.view.frame.size.width*0.7, 44) duration:8.0 andFadeLength:10.0f];
+    titleLabel.text = [NSString stringWithFormat:@"%@ - %@", currentPlayingItem.title ?: @"" , currentPlayingItem.artist?: @"" ];
+    [wrapper addSubview:titleLabel];
+  
+    self.navigationItem.titleView = wrapper;
   }
   
-  if ([currentPlayingItem title]) {
-   header.titleLabel.text = [currentPlayingItem title];
-  }
-  if ([currentPlayingItem artist]) {
-    header.subtitleLabel.text = [currentPlayingItem artist];
-  }
-  self.commentsTable.tableHeaderView = header;
+  
 }
 
 
@@ -88,7 +100,6 @@ UITextField *postField;
                                            selector:@selector(keyboardWillBeHidden:)
                                                name:UIKeyboardWillHideNotification object:nil];
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   [postField resignFirstResponder];

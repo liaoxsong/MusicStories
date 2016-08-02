@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3gv-Od-Fk6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,50 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wk5-sO-7dy">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wk5-sO-7dy">
+                                <rect key="frame" x="0.0" y="20" width="600" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewHeader" rowHeight="100" id="CyB-4v-TLb" customClass="ViewHeader">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CyB-4v-TLb" id="f6Q-q0-XFy">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9We-yj-Tt6">
-                                                    <rect key="frame" x="15" y="10" width="80" height="80"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Cc2-d9-T9d"/>
-                                                        <constraint firstAttribute="width" constant="80" id="LvN-0o-sfE"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the artist." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btJ-EZ-S7b">
-                                                    <rect key="frame" x="105" y="53" width="480" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1c-dw-Eut">
-                                                    <rect key="frame" x="105" y="30" width="480" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is the title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1c-dw-Eut">
+                                                    <rect key="frame" x="20" y="25" width="480" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is the artist." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btJ-EZ-S7b">
+                                                    <rect key="frame" x="20" y="52" width="480" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="btJ-EZ-S7b" firstAttribute="leading" secondItem="9We-yj-Tt6" secondAttribute="trailing" constant="10" id="1uS-fP-h70"/>
-                                                <constraint firstItem="9We-yj-Tt6" firstAttribute="centerY" secondItem="f6Q-q0-XFy" secondAttribute="centerY" id="Ibd-Jd-7aF"/>
                                                 <constraint firstAttribute="trailing" secondItem="btJ-EZ-S7b" secondAttribute="trailing" constant="15" id="N1i-lL-ks7"/>
-                                                <constraint firstItem="9We-yj-Tt6" firstAttribute="leading" secondItem="f6Q-q0-XFy" secondAttribute="leading" constant="15" id="P02-EQ-DlN"/>
-                                                <constraint firstItem="A1c-dw-Eut" firstAttribute="leading" secondItem="9We-yj-Tt6" secondAttribute="trailing" constant="10" id="YYF-j6-oyo"/>
                                                 <constraint firstItem="A1c-dw-Eut" firstAttribute="top" secondItem="f6Q-q0-XFy" secondAttribute="top" constant="30" id="Zcn-S5-ZW1"/>
                                                 <constraint firstAttribute="trailing" secondItem="A1c-dw-Eut" secondAttribute="trailing" constant="15" id="scp-9m-UvJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="btJ-EZ-S7b" secondAttribute="bottom" constant="29.5" id="x0G-o2-0S9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="albumImage" destination="9We-yj-Tt6" id="10k-CV-aYO"/>
                                             <outlet property="subtitleLabel" destination="btJ-EZ-S7b" id="7cR-um-kcL"/>
                                             <outlet property="titleLabel" destination="A1c-dw-Eut" id="z9A-9I-JmU"/>
                                         </connections>
@@ -71,22 +59,59 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="umi-oS-Nyd"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gn-bS-5DJ">
+                                <rect key="frame" x="13" y="562" width="25" height="25"/>
+                                <state key="normal" title="Button" image="pen_icon"/>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Reo-0a-DQJ">
+                                <rect key="frame" x="0.0" y="550" width="600" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-i1-gom">
+                                <rect key="frame" x="53" y="558" width="527" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wk5-sO-7dy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ADX-jx-TBA"/>
                             <constraint firstAttribute="trailing" secondItem="Wk5-sO-7dy" secondAttribute="trailing" id="QX2-UO-SZT"/>
                             <constraint firstItem="Wk5-sO-7dy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lme-0c-qRr"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wk5-sO-7dy" secondAttribute="bottom" id="wCV-SM-htB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wk5-sO-7dy" secondAttribute="bottom" constant="50" id="wCV-SM-htB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Vdi-tm-Qc5"/>
                     <connections>
                         <outlet property="commentsTable" destination="Wk5-sO-7dy" id="yHy-mK-xjG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1073" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vFn-Yj-fr0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3gv-Od-Fk6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zo5-8s-M59">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="G3j-ek-S0K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezr-aZ-jA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="261" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pen_icon" width="43" height="43"/>
+    </resources>
 </document>

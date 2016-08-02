@@ -4,6 +4,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'MusicStories' do
   use_frameworks!
 
-  pod "SlackTextViewController"
+  pod 'MarqueeLabel'
 
 end

@@ -10,7 +10,6 @@
 
 @interface ViewHeader : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *albumImage;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 

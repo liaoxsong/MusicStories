@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-MusicStories.xcscheme</key>
+		<key>MarqueeLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SlackTextViewController.xcscheme</key>
+		<key>Pods-MusicStories.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6E2AFB67C980B6696F0010720AFFB520</key>
+		<key>A7F56A69BE1373742F9A495EEB52F4D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FEE242139D6E684CE9CBD709A5AC74F</key>
+		<key>FDBA4F61F65DD9097858D155E98DA5D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

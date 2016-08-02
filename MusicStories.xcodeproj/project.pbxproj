@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A36D39E838D30BF2C91AF45 /* Pods_MusicStories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD9958115D436B41AE760A /* Pods_MusicStories.framework */; };
+		E4A42BDC1D50447F005C0045 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A42BDB1D50447F005C0045 /* Comment.m */; };
 		E4BB0E091D1E52F900E36992 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB0E081D1E52F900E36992 /* main.m */; };
 		E4BB0E0C1D1E52F900E36992 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB0E0B1D1E52F900E36992 /* AppDelegate.m */; };
 		E4BB0E0F1D1E52F900E36992 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB0E0E1D1E52F900E36992 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 		2294ECA9079DDC1BD230DC51 /* Pods-MusicStories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicStories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicStories/Pods-MusicStories.debug.xcconfig"; sourceTree = "<group>"; };
 		B1FD9958115D436B41AE760A /* Pods_MusicStories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicStories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5580D607BE3FFAFD6966B39 /* Pods-MusicStories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicStories.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicStories/Pods-MusicStories.release.xcconfig"; sourceTree = "<group>"; };
+		E4A42BDA1D50447F005C0045 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		E4A42BDB1D50447F005C0045 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		E4BB0E041D1E52F900E36992 /* MusicStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BB0E081D1E52F900E36992 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4BB0E0A1D1E52F900E36992 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,6 +67,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E4A42BDD1D5044CC005C0045 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4A42BDA1D50447F005C0045 /* Comment.h */,
+				E4A42BDB1D50447F005C0045 /* Comment.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		E4BB0DFB1D1E52F900E36992 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +97,7 @@
 		E4BB0E061D1E52F900E36992 /* MusicStories */ = {
 			isa = PBXGroup;
 			children = (
+				E4A42BDD1D5044CC005C0045 /* Model */,
 				E4D016EC1D2B162A006C46CA /* ViewHeader.h */,
 				E4D016ED1D2B162A006C46CA /* ViewHeader.m */,
 				E4BB0E0A1D1E52F900E36992 /* AppDelegate.h */,
@@ -232,6 +245,7 @@
 				E4BB0E0F1D1E52F900E36992 /* ViewController.m in Sources */,
 				E4BB0E0C1D1E52F900E36992 /* AppDelegate.m in Sources */,
 				E4BB0E091D1E52F900E36992 /* main.m in Sources */,
+				E4A42BDC1D50447F005C0045 /* Comment.m in Sources */,
 				E4D016EE1D2B162A006C46CA /* ViewHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
