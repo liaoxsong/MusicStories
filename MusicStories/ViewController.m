@@ -1,17 +1,20 @@
 
 #import "ViewController.h"
-#import "ViewHeader.h"
+#import "CommentCell.h"
 
 @import MediaPlayer;
 @import MarqueeLabel;
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *postTextView;
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *textCover;
+@property (weak, nonatomic) IBOutlet UITextView *postField;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
 @property (strong, nonatomic) MPMediaItem* currentPlayingItem;
 @end
 
 @implementation ViewController
+
 
 @synthesize currentPlayingItem;
 
@@ -21,13 +24,13 @@
   [self registerForKeyboardNotifications];
   currentPlayingItem = [[MPMusicPlayerController systemMusicPlayer] nowPlayingItem];
   self.automaticallyAdjustsScrollViewInsets = YES;
-
   
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
                                  action:@selector(dismissKeyboard)];
-  
   [self.view addGestureRecognizer:tap];
+  
+  //_textCover.translatesAutoresizingMaskIntoConstraints = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -57,11 +60,7 @@
   
     self.navigationItem.titleView = wrapper;
   }
-  
-  
 }
-
-
 
 //MARK: tableview datasource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -76,7 +75,7 @@
 // PRAGMA MARK: keyboard
 
 -(void)dismissKeyboard {
-  [_postTextView resignFirstResponder];
+  [_postField resignFirstResponder];
 }
 
 - (void)registerForKeyboardNotifications
@@ -89,27 +88,43 @@
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(keyboardWillBeHidden:)
                                                name:UIKeyboardWillHideNotification object:nil];
+  
+}
+
+- (void) registerMediaLibraryChangedNotification {
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  [_postTextView resignFirstResponder];
+  [_postField resignFirstResponder];
 }
 
 - (void) keyboardWillShow: (NSNotification*)aNotification {
   NSDictionary* info = [aNotification userInfo];
   CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-
+  
+  NSLog(@"textCover origin:%f", _textCover.frame.origin.y);
+  
   [UIView animateWithDuration:0.3f animations:^{
-    _postTextView.frame = CGRectMake(_postTextView.frame.origin.x, _postTextView.frame.origin.y-kbSize.height, _postTextView.frame.size.width, _postTextView.frame.size.height);
+    [_textCover setFrame:CGRectMake(0, self.view.frame.size.height - kbSize.height - _textCover.frame.size.height, _textCover.frame.size.width, _textCover.frame.size.height)];
   }];
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
+  
   [UIView animateWithDuration:0.3f animations:^{
-    _postTextView.frame = CGRectMake(_postTextView.frame.origin.x, self.view.frame.size.height-_postTextView.frame.size.height, _postTextView.frame.size.width, _postTextView.frame.size.height);
+    [_textCover setFrame:CGRectMake(0, self.view.frame.size.height, _textCover.frame.size.width, _textCover.frame.size.height)];
   }];
+}
+
+- (IBAction)writePressed:(UIButton *)sender {
+  [_postField becomeFirstResponder];
+}
+
+- (IBAction)postPressed:(UIButton *)sender {
+  
 }
 
 @end
