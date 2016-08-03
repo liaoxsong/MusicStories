@@ -7,19 +7,23 @@
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *textCover;
-@property (weak, nonatomic) IBOutlet UITextView *postField;
+//@property (weak, nonatomic) IBOutlet UIView *textCover;
+//@property (weak, nonatomic) IBOutlet UITextView *postField;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTable;
 @property (strong, nonatomic) MPMediaItem* currentPlayingItem;
 @end
 
 @implementation ViewController
 
-
 @synthesize currentPlayingItem;
+UIView *textCover;
+UITextView *postField;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  //set up comment field programmtically to avoid autolayout conflicts with setFrame issue
+  [self setUpCommentField];
+  
 
   [self registerForKeyboardNotifications];
   currentPlayingItem = [[MPMusicPlayerController systemMusicPlayer] nowPlayingItem];
@@ -29,12 +33,21 @@
                                  initWithTarget:self
                                  action:@selector(dismissKeyboard)];
   [self.view addGestureRecognizer:tap];
-  
-  //_textCover.translatesAutoresizingMaskIntoConstraints = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
   [self refreshNavigationBar];
+}
+
+-(void) setUpCommentField {
+  textCover = [[UIView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 110)];
+  textCover.backgroundColor = [UIColor whiteColor];
+  [[self view] addSubview:textCover];
+  
+  postField = [[UITextView alloc] initWithFrame:CGRectMake(16, 16, self.view.frame.size.width - 32, 40)];
+  postField.backgroundColor = [UIColor lightGrayColor];
+  [textCover addSubview:postField];
+  
 }
 
 -(void) refreshNavigationBar {
@@ -75,7 +88,7 @@
 // PRAGMA MARK: keyboard
 
 -(void)dismissKeyboard {
-  [_postField resignFirstResponder];
+  [postField resignFirstResponder];
 }
 
 - (void)registerForKeyboardNotifications
@@ -96,17 +109,17 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  [_postField resignFirstResponder];
+  [postField resignFirstResponder];
 }
 
 - (void) keyboardWillShow: (NSNotification*)aNotification {
   NSDictionary* info = [aNotification userInfo];
   CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
   
-  NSLog(@"textCover origin:%f", _textCover.frame.origin.y);
+  //NSLog(@"textCover origin:%f", _textCover.frame.origin.y);
   
   [UIView animateWithDuration:0.3f animations:^{
-    [_textCover setFrame:CGRectMake(0, self.view.frame.size.height - kbSize.height - _textCover.frame.size.height, _textCover.frame.size.width, _textCover.frame.size.height)];
+    [textCover setFrame:CGRectMake(0, self.view.frame.size.height - kbSize.height - textCover.frame.size.height, textCover.frame.size.width, textCover.frame.size.height)];
   }];
 }
 
@@ -115,12 +128,12 @@
 {
   
   [UIView animateWithDuration:0.3f animations:^{
-    [_textCover setFrame:CGRectMake(0, self.view.frame.size.height, _textCover.frame.size.width, _textCover.frame.size.height)];
+    [textCover setFrame:CGRectMake(0, self.view.frame.size.height, textCover.frame.size.width, textCover.frame.size.height)];
   }];
 }
 
 - (IBAction)writePressed:(UIButton *)sender {
-  [_postField becomeFirstResponder];
+  [postField becomeFirstResponder];
 }
 
 - (IBAction)postPressed:(UIButton *)sender {
